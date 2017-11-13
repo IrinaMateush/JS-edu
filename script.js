@@ -1,20 +1,17 @@
 "use strict";
-
-function print (text) {
-    alert(text);
-}
-
-const userName = prompt("Введите Ваше имя");
-
-function isValid (name) {
-    return name !== '' && name !== null;
-} 
-
-function sayHello () {
-    if (isValid(userName)){
-        print("Welcome " + userName + "!")
+//проверка логина
+let login = prompt ("Кто пришел?", "");
+if (login == "Админ") {
+    let password = prompt ("Пароль?", "");
+    if (password == "Властелин") {
+        alert("Добро пожаловать!");
+    } else if (password == null ) {
+        alert("Вход отменен");
     } else {
-        print("Некорректное имя!");
+        alert("Пароль неверен");
     }
+}else if (login == null ) {
+    alert("Вход отменен");
+} else {
+    alert("Я Вас не знаю");
 }
-sayHello();
