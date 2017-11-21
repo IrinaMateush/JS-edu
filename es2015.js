@@ -7,6 +7,16 @@ let isValid = function(name){
 // стрелка выглядит так (убрали return, = function, скобки )
 let isValid = name => !!name;
 
+//еще пример на стрелки. дано:
+const fooArr = function foo () {
+    return "bar";
+}
+// убираем function, т.к. есть скобки, чтобы понять что происходит 
+// название в function expression (выражение)
+// чтобы разделить аргументы и тело используется стрелка
+const fooArr = () => {
+    return "bar";
+}
 // 2. упрощение методов объекта (занятие 2)
 //старый стиль 
 let store = {};

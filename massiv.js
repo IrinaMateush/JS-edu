@@ -66,3 +66,12 @@ var arr = ["Яблоко","Апельсин","Груша","Лимон"];
 let rand = (min,max) => min + Math.floor(Math.random() * (max + 1 - min));
 console.log(arr[rand(0, arr.lenght - 1)]);
 // т.к. рандом генерит значения от 0 до 1, то min задавать не обязательно 
+
+//варианты вывода массива 
+const arr = [2,35,3,5,3,2];
+//1 вариант 
+for (let el of arr){
+    console.log(el);
+}
+//2 вариант. Лучше ничем, но делает код читабельнее. Использует стрелочную функцию
+arr.array.forEach(el => console.log(el));
