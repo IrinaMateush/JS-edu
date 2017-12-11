@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+</head>
+<body>
+    <div id="clock">
+        My:
+        <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+    </div>
+    <div id="clock_moskow">
+        Moscow:
+        <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+    </div>
+    <div id="clock_berlin">
+        Berlin:
+        <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+    </div>
+    <script>
+        (function () { //тут function expration, используется как выражение, для этого скобки
+        function Clock(el){ //передаем функции элемент document.querySelector('#clock') и т.д. внутри конструктора это html элемент
+        //запуск часиков 
+        this.start = function () {
+            this.hourElem = el.querySelector('.hour'); //ищем внутри html элемента, полученного выше
+            this.minElem = el.querySelector('.min');
+            this.secElem = el.querySelector('.sec');
+
+            this.time = setInterval(() => { //что тут происходит? на что смотрит this?
+                this.update()
+            },1000);
+            this.update();
+        }
+        // остановка часиков 
+        this.stop = function () {
+            clearInterval(this.time);
+        },
+        // обновление часов
+        this.update = function () {
+            let date = new Date();
+            const sec = date.getSeconds();
+            this.hourElem.innerHTML = date.getHours();
+            this.minElem.innerHTML = date.getMinutes();
+            this.secElem.innerHTML = sec < 10 ? '0' + sec : sec;
+        }
+        }
+
+        //получаем текущее время
+        const clock = new Clock(document.querySelector('#clock'));
+        const clockMoskow = new Clock(document.querySelector('#clock_moskow'));
+        const clockBerlin = new Clock(document.querySelector('#clock_berlin'));
+
+        clock.start();
+        clockMoskow.start();
+        clockBerlin.start();
+    })(); //модуль function expration завершается и тут же мы пишем скобки вызова функции
+
+    </script>
+</body>
+</html>
